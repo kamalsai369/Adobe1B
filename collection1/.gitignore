@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.log
+temp/
+.env
+
+# Large model files (optional - you might want to include these)
+# models/
+# embeddings/
+
+# Output files that are generated (optional)
+# collection1/challenge1b_output.json
