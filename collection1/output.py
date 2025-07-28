@@ -91,6 +91,14 @@ def extract_section_content(text, section_title):
     section_text = '\n'.join(lines[start_idx:end_idx])
     return section_text
 
+def clean_text(text):
+    """Removes unwanted special characters from text, keeping basic punctuation."""
+    # This regex removes characters that are not alphanumeric, whitespace, or basic punctuation.
+    text = re.sub(r'[^\w\s.,!?-]', '', text)
+    # Replace multiple spaces with a single space for cleaner output.
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
 # --- Main Application Logic ---
 
 def main():
@@ -229,6 +237,9 @@ def main():
                 "content": section_content
             })
         
+        # Clean the generated text before adding it to the output
+        cleaned_text = clean_text(refined_text)
+
         # Add to output
         extracted_sections.append({
             "document": metadata["source"],
@@ -239,7 +250,7 @@ def main():
         
         subsection_analysis.append({
             "document": metadata["source"],
-            "refined_text": refined_text,
+            "refined_text": cleaned_text,
             "page_number": metadata["page_number"]
         })
 
